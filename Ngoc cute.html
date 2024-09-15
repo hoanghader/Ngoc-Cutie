@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Thuyết Trình Dễ Thương</title>
+    <!-- Font chữ Việt hóa dễ thương -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Caveat:wght@700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: pink;
+            font-family: 'Baloo 2', cursive;
+        }
+
+        /* Responsive cho điện thoại */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .active {
+            display: flex;
+        }
+
+        /* Chuyển động mượt cho mọi thiết bị */
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100vw); }
+            50% { transform: translateX(0); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* Slide 1: Chữ chạy và zoom */
+        .slide1-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: slideInLeft 5s ease-in-out forwards;
+        }
+
+        .slide1-content div {
+            font-family: 'Caveat', cursive;
+            font-size: 6vw; /* Responsive text size */
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Thêm chuyển động xung quanh - Hình ảnh dễ thương */
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cute-circle {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            animation: rotate 3s infinite linear; /* Xoay tròn mượt */
+        }
+
+        .cute-circle:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            top: 30px;
+            left: 30px;
+        }
+
+        .cute-circle:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 50%;
+            top: 30px;
+            right: 30px;
+        }
+
+        /* Slide 2: Chữ nhấp nháy đổi màu và hoạt động dễ thương */
+        @keyframes blink {
+            0%, 100% { color: yellow; }
+            33% { color: pink; }
+            66% { color: red; }
+        }
+
+        .slide2-content {
+            font-family: 'Baloo 2', cursive;
+            font-size: 7vw; /* Responsive text size */
+            color: white;
+            animation: blink 3s infinite;
+        }
+
+        /* Gương mặt dễ thương thêm chuyển động */
+        .cute-face {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 2s infinite ease-in-out; /* Hiệu ứng nảy */
+        }
+
+        .cute-face:before {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: black;
+            border-radius: 50%;
+            top: 30px;
+            left: 30px;
+        }
+
+        .cute-face:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: black;
+            border-radius: 50%;
+            top: 30px;
+            right: 30px;
+        }
+
+        .cute-face .smile {
+            width: 60px;
+            height: 30px;
+            background-color: black;
+            border-radius: 0 0 30px 30px;
+            position: absolute;
+            top: 70px;
+        }
+
+        /* Slide 3: Trái tim bay */
+        @keyframes heartFly {
+            0% { transform: translateY(100vh); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        .heart {
+            position: absolute;
+            animation: heartFly 5s linear infinite;
+        }
+
+        .heart-shape {
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+        }
+
+        .heart-shape:before, .heart-shape:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart-shape:before {
+            top: -40px;
+            left: 0;
+        }
+
+        .heart-shape:after {
+            left: 40px;
+            top: 0;
+        }
+
+        /* Pháo hoa */
+        @keyframes firework {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, yellow, orange, red);
+            border-radius: 50%;
+            opacity: 0;
+            animation: firework 1s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+    <!-- Slide 1 -->
+    <div class="slide active" id="slide1">
+        <div class="slide1-content">
+            <div>Ngọc đáng yêu</div>
+            <div class="cute-circle"></div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" id="slide2">
+        <div class="slide2-content">Ngọc xinh gái</div>
+        <div class="cute-face">
+            <div class="smile"></div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" id="slide3">
+        <!-- Trái tim bay -->
+        <div class="heart" style="left: 30%;">
+            <div class="heart-shape"></div>
+        </div>
+        <div class="heart" style="left: 70%;">
+            <div class="heart-shape"></div>
+        </div>
+        <!-- Pháo hoa -->
+        <div class="firework" style="top: 20%; left: 40%;"></div>
+        <div class="firework" style="top: 50%; left: 70%;"></div>
+        <div class="firework" style="top: 80%; left: 20%;"></div>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showNextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 5000); // Mỗi slide hiển thị 5 giây
+</script>
+
+</body>
+</html>
